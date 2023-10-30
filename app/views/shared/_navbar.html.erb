@@ -7,18 +7,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <%= 
-            link_to_unless_current("Home", root_path, class: "nav-link") do
-              link_to "Home", root_path, class: "nav-link active", "aria-current": "page" 
-            end
-          %>
+          <%= link_to("Home", root_path, class: class_names("nav-link", { "active": current_page?(root_path) }), aria: { current: (current_page?(root_path) ? "page" : nil) }) %>
         </li>
         <li class="nav-item">
-          <%= 
-            link_to_unless_current("About", about_path, class: "nav-link") do
-              link_to "About", about_path, class: "nav-link active", "aria-current": "page" 
-            end
-          %>
+          <%= link_to("About", about_path, class: class_names("nav-link", { "active": current_page?(about_path) }), aria: { current: (current_page?(about_path) ? "page" : nil) }) %>
         </li>
         <%# <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
