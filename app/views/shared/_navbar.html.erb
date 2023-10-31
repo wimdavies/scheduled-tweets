@@ -12,25 +12,22 @@
         <li class="nav-item">
           <%= link_to("About", about_path, class: class_names("nav-link", { "active": current_page?(about_path) }), aria: { current: (current_page?(about_path) ? "page" : nil) }) %>
         </li>
-        <%# <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li> %>
       </ul>
-      <%# <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> %>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <% if Current.user %>
+          <span class="navbar-text me-2"><%= Current.user.email %></span>
+          <li class="nav-item">
+            <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-outline-secondary" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Sign up", sign_up_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Login", sign_in_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </nav>
